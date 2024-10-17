@@ -1,6 +1,15 @@
 "use client"; //because using react usereffect
 import { useEffect, useState } from "react";
 import Image from "next/image";
+// static metadata
+// export const metadata = {
+//   title: "Home",
+// };
+
+export async function generateMetadata({ params, serachParams }) {
+  const product = await getProduct(params.id);
+  return { title: product.title };
+}
 
 export default function Home() {
   const [jsonData, setJsonData] = useState("");
